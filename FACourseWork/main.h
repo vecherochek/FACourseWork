@@ -18,6 +18,13 @@ void add_survey(Decorator<T>& container, int b)
 			<< "1. да" << std::endl
 			<< "2. нет" << std::endl;
 		std::cin >> c;
+		if (!std::cin)
+		{
+			std::cout << error_massage << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
 		if (c < 1 || c > 2)
 		{
 			std::cout << error_massage << std::endl;
@@ -30,7 +37,7 @@ void add_survey(Decorator<T>& container, int b)
 		container.insert(dynamic_cast<MySurvey*>(creator_inter->generate(b)));
 	}
 	else {
-		_survey->enter_survey();
+		_survey->enter_survey(b);
 		container.insert(_survey);
 	}
 }
@@ -42,6 +49,13 @@ void delete_survey(Decorator<T>& container)
 	{
 		std::cout << "Введите id опроса для его удаления: ";
 		std::cin >> c;
+		if (!std::cin)
+		{
+			std::cout << error_massage << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
 		if (c < 1)
 		{
 			std::cout << error_massage << std::endl;
@@ -75,6 +89,13 @@ void display_statistics(Decorator<T>& container)
 			<< "4. По человеку-пауку" << std::endl
 			<< "5. Курица или яйцо?" << std::endl;
 		std::cin >> c;
+		if (!std::cin)
+		{
+			std::cout << error_massage << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
 		if (c < 1 || c > 5)
 		{
 			std::cout << error_massage << std::endl;
@@ -109,6 +130,13 @@ void find_find(Decorator<T>& container, std::string question, std::vector<std::s
 	{
 		print_vector(answers);
 		std::cin >> d;
+		if (!std::cin)
+		{
+			std::cout << error_massage << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
 		if (d < 1 || d > (int)answers.size())
 		{
 			std::cout << error_massage << std::endl;
@@ -118,6 +146,7 @@ void find_find(Decorator<T>& container, std::string question, std::vector<std::s
 	}
 	container.find_by_something(question, answers[d - 1]);
 }
+
 template <typename T>
 void search_survey(Decorator<T>& container)
 {
@@ -131,6 +160,13 @@ void search_survey(Decorator<T>& container)
 			<< "4. По мушкетерам" << std::endl
 			<< "5. По человеку-пауку" << std::endl;
 		std::cin >> c;
+		if (!std::cin)
+		{
+			std::cout << error_massage << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
 		if (c < 1 || c > 5)
 		{
 			std::cout << error_massage << std::endl;
@@ -145,6 +181,13 @@ void search_survey(Decorator<T>& container)
 		{
 			std::cout << "Введите ID: " << std::endl;
 			std::cin >> d;
+			if (!std::cin)
+			{
+				std::cout << error_massage << std::endl;
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				continue;
+			}
 			if (d < 1)
 			{
 				std::cout << error_massage << std::endl;
@@ -168,6 +211,7 @@ void search_survey(Decorator<T>& container)
 		break;
 	}
 }
+
 template <typename T>
 int MENU(Decorator<T>& container, int b)
 {	
@@ -181,6 +225,13 @@ int MENU(Decorator<T>& container, int b)
 			<< "4. Поиск опроса" << std::endl
 			<< "0. Выход" << std::endl;
 		std::cin >> a;
+		if (!std::cin)
+		{
+			std::cout << error_massage << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
 		if (a < -1 || a > 4)
 		{
 			std::cout << error_massage << std::endl;

@@ -5,7 +5,6 @@
 #include <vector>
 #include <limits>
 
-
 class Survey
 {
 public:
@@ -37,7 +36,7 @@ public:
 	std::string					ÑhickenOrEgg = "";
 
 	void	print_survey();
-	void	enter_survey();
+	void	enter_survey(unsigned int b);
 	void	generate_survey(unsigned int _id) override;
 
 	MySurvey(){};
@@ -141,9 +140,9 @@ void MySurvey:: print_survey()
 		<< chicken_or_egg	<< ÑhickenOrEgg		<< std::endl;
 }
 
-void MySurvey::enter_survey()
+void MySurvey::enter_survey(unsigned int b)
 {
-	ID = 0;
+	ID = b;
 	Sex = enter(sex, _sex);
 	Age = enter_number(age, age_warning, 0, 101);
 	Country = enter(country, _country);

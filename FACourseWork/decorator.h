@@ -8,16 +8,15 @@
 
 #define NUMBER_OF_SURVEY 5
 
-
 template <typename T>
 class Decorator {
 public:
-    virtual ~Decorator() {}
-    virtual void insert(T value) = 0;
-    virtual int remove(unsigned int value) = 0;
-    virtual void find_by_id(unsigned int id) = 0;
-    virtual void find_by_something(std::string something, std::string somestring) = 0;
-    virtual void statistic_by_something(std::string something) = 0;
+    virtual         ~Decorator() {}
+    virtual void    insert(T value) = 0;
+    virtual int     remove(unsigned int value) = 0;
+    virtual void    find_by_id(unsigned int id) = 0;
+    virtual void    find_by_something(std::string something, std::string somestring) = 0;
+    virtual void    statistic_by_something(std::string something) = 0;
 };
 
 template <typename T>
@@ -65,9 +64,9 @@ public:
     }
     void find_by_something(std::string something, std::string somestring) override
     {
-        int number = 0;
-        auto iter = _map.begin();
-        auto str = convert_str_to_enum.at(something);
+        int     number = 0;
+        auto    iter = _map.begin();
+        auto    str = convert_str_to_enum.at(something);
         switch (str)
         {
         case Something::country:
@@ -130,9 +129,9 @@ public:
     }
     void statistic_by_something(std::string something) override
     {
-        std::map<std::string, int> stat;
-        auto str = convert_str_to_enum.at(something);
-        auto it = _map.begin();
+        std::map<std::string, int>  stat;
+        auto                        str = convert_str_to_enum.at(something);
+        auto                        it = _map.begin();
         switch (str)
         {
             case Something::country:
@@ -158,7 +157,7 @@ public:
         }
 
         std::cout << something << std::endl;
-        auto iter = stat.begin();
+        auto    iter = stat.begin();
         for (iter; iter != stat.end(); ++iter)
         {          
             std::cout << iter->first << std::endl 
@@ -215,9 +214,9 @@ public:
     }
     void find_by_something(std::string something, std::string somestring) override
     {
-        int number = 0;
-        auto iter = _forwardlist.begin();
-        auto str = convert_str_to_enum.at(something);
+        int     number = 0;
+        auto    iter = _forwardlist.begin();
+        auto    str = convert_str_to_enum.at(something);
         switch (str)
         {
         case Something::country:
@@ -280,9 +279,9 @@ public:
     }
     void statistic_by_something(std::string something) override
     {
-        std::map<std::string, int> stat;
-        auto str = convert_str_to_enum.at(something);
-        auto it = _forwardlist.begin();
+        std::map<std::string, int>  stat;
+        auto                        str = convert_str_to_enum.at(something);
+        auto                        it = _forwardlist.begin();
         switch (str)
         {
         case Something::country:
@@ -308,7 +307,7 @@ public:
         }
 
         std::cout << something << std::endl;
-        auto iter = stat.begin();
+        auto    iter = stat.begin();
         for (iter; iter != stat.end(); ++iter)
         {
             std::cout << iter->first << std::endl

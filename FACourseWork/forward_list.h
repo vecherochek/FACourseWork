@@ -41,11 +41,6 @@ public:
 			this->_ptr = rhs._ptr; 
 			return (*this);
 		}
-		iterator& operator++()
-		{
-			this->_ptr = this->_ptr->_next; 
-			return (*this);
-		}
 		iterator operator++(int)
 		{
 			iterator copy = *this; 
@@ -192,4 +187,3 @@ void ForwardList<T>::remove(const T& value)
 		}
 	}
 }
-
